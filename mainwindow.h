@@ -29,6 +29,7 @@ private slots:
     void receive();
     void get_temp();
     void get_temping();
+    void clean();
 };
 
 #endif // MAINWINDOW_H

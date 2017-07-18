@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(serial,SIGNAL(readyRead()),this,SLOT(receive()));  //接收数据
     connect(ui->Button_get_temp,SIGNAL(clicked(bool)),this,SLOT(get_temp()));  //获取温度
     connect(ui->Button_get_temping,SIGNAL(clicked(bool)),this,SLOT(get_temping()));  //连续获取温度
+    connect(ui->Button_clean,SIGNAL(clicked(bool)),this,SLOT(clean()));  //清空接收区
 }
 
 MainWindow::~MainWindow()
@@ -99,12 +100,17 @@ void MainWindow::connectport()  //连接串口
 void MainWindow::receive()  //接受数据
 {
     QByteArray message=serial->readAll();
-    ui->textBrowser->insertPlainText(QString(message)+" ");
+    ui->textBrowser->insertPlainText(QString(message)+"℃ ");
 }
 
 void MainWindow::get_temp()  //获取温度
 {
-
+    QString message;
+    for (int i=0;i<5;i++)
+    {
+        message=i;
+        serial->write(message.toUtf8());
+    }
 }
 
 void MainWindow::get_temping()  //连续获取温度
@@ -121,3 +127,7 @@ void MainWindow::get_temping()  //连续获取温度
     }
 }
 
+void MainWindow::clean()
+{
+    ui->textBrowser->clear();
+}
