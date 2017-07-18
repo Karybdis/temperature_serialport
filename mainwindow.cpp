@@ -112,7 +112,7 @@ void MainWindow::get_temp()  //获取温度
         serial->write(message.toUtf8());
     }
 }
-
+/**********************************************************/
 void MainWindow::get_temping()  //连续获取温度
 {
     if (!temping)
@@ -126,8 +126,9 @@ void MainWindow::get_temping()  //连续获取温度
         temping=false;
     }
 }
+/************************************未完成***********************************/
 
-void MainWindow::clean()
+void MainWindow::clean()  //温度显示清屏
 {
     ui->textBrowser->clear();
 }
