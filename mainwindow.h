@@ -5,6 +5,7 @@
 #include<QtSerialPort/QSerialPort>
 #include<QtSerialPort/QSerialPortInfo>
 #include<QMessageBox>
+#include<QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +23,7 @@ private:
     Ui::MainWindow *ui;
     QSerialPort *serial;
     bool temping;
+    QTimer *timer;
 
 private slots:
     void portscan();

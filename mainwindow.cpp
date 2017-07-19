@@ -106,27 +106,30 @@ void MainWindow::receive()  //接受数据
 void MainWindow::get_temp()  //获取温度
 {
     QString message;
-    for (int i=0;i<5;i++)
+    for (int i=0;i<5;i++)    /*******待修改*******/
     {
         message=i;
         serial->write(message.toUtf8());
     }
 }
-/**********************************************************/
+
 void MainWindow::get_temping()  //连续获取温度
 {
     if (!temping)
     {
+        timer=new QTimer(this);
+        timer->start(1000);
+        connect(timer,SIGNAL(timeout()),this,SLOT(get_temp()));
         ui->Button_get_temping->setText("停止获取");
         temping=true;
     }
     else
     {
+        timer->stop();
         ui->Button_get_temping->setText("连续获得温度");
         temping=false;
     }
 }
-/************************************未完成***********************************/
 
 void MainWindow::clean()  //温度显示清屏
 {
