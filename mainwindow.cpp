@@ -100,7 +100,11 @@ void MainWindow::connectport()  //连接串口
 void MainWindow::receive()  //接受数据
 {
     QByteArray message=serial->readAll();
+    if (ui->checkBox_enter->isChecked())
+        ui->textBrowser->insertPlainText("\n");
     ui->textBrowser->insertPlainText(QString(message)+"℃ ");
+    ui->textBrowser->insertPlainText(QTime::currentTime().toString("hh:mm:ss   "));
+
 }
 
 void MainWindow::get_temp()  //获取温度

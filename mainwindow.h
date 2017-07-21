@@ -6,6 +6,7 @@
 #include<QtSerialPort/QSerialPortInfo>
 #include<QMessageBox>
 #include<QTimer>
+#include<QTime>
 
 namespace Ui {
 class MainWindow;
